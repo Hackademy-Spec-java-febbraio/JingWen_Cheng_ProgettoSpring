@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{index :: head}"></head>
+<body>
+    <div th:insert="~{index :: navbar}"></div>
+
+    <div class="container my-5">
+        <h1 th:text="${article.title}">Titolo articolo</h1>
+        <h5 th:text="${article.subtitle}" class="text-muted">Sottotitolo</h5>
+        <p th:text="${article.body}" class="mt-4">Contenuto dell'articolo</p>
+
+        <p class="mt-4"><strong>Data di pubblicazione:</strong> <span th:text="${article.publishDate}">2025-04-15</span></p>
+
+        <p>
+            Categoria: 
+            <span th:if="${article.category != null}" th:text="${article.category.name}">Categoria</span>
+            <span th:if="${article.category == null}">Nessuna categoria</span>
+        </p>
+
+        <img th:if="${article.imagePath != null}"
+             th:src="@{'/images/' + ${article.imagePath}}" 
+             alt="Image" class="img-fluid mt-4">
+        
+        <div class="mt-4">
+            <a th:href="@{/articles/edit/{id}(id=${article.id})}" class="btn btn-warning">Modifica articolo</a>
+            <form th:action="@{/articles/delete/{id}(id=${article.id})}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('确定要删除这篇文章吗？');">删除文章</button>
+            </form>
+        </div>
+
+        <a th:href="@{/articles}" class="btn btn-secondary mt-3">Torna alla lista</a>
+    </div>
+
+    <div th:insert="~{index :: footer}"></div>
+</body>
+</html>

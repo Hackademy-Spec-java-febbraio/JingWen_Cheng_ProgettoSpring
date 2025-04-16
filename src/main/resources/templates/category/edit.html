@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>编辑分类</title>
+</head>
+<body>
+    <h1>编辑分类</h1>
+    <form th:action="@{/categories/edit/{id}(id=${category.id})}" method="post">
+        <label for="name">名称:</label>
+        <input type="text" id="name" name="name" th:value="${category.name}" required>
+        <button type="submit">更新</button>
+    </form>
+    <a href="/categories">返回分类列表</a>
+</body>
+</html>

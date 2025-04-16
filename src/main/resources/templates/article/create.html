@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Article</title>
+</head>
+<body>
+    <div>
+        <h1>Create Article</h1>
+        <form th:action="@{/articles}" th:object="${article}" method="post" enctype="multipart/form-data">
+            <label for="title">Title</label>
+            <input type="text" id="title" th:field="*{title}" required />
+        
+            <label for="subtitle">Subtitle</label>
+            <input type="text" id="subtitle" th:field="*{subtitle}" required />
+        
+            <label for="publishDate">Publish Date</label>
+            <input type="date" id="publishDate" th:field="*{publishDate}" required />
+        
+            <label for="body">Content</label>
+            <textarea id="body" th:field="*{body}" required></textarea>
+        
+            <label for="file-image">Image</label>
+            <input type="file" id="file-image" name="file-image" />
+        
+            <button type="submit">Create Article</button>
+        </form>
+        
+    </div>
+</body>
+</html>

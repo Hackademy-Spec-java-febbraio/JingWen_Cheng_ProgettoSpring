@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:insert="~{index :: head}"></head>
+
+<body>
+
+<!-- Navbar -->
+<div th:insert="~{index :: navbar}"></div>
+
+<div class="container mt-5">
+    <h1>Welcome to the Simulator</h1>
+    <p>This is the home page.</p>
+
+    <!-- Unauthorized Alert -->
+    <div th:if="${param.notAuthorized}">
+        <div class="alert alert-danger mt-3" role="alert">
+            You are not authorized to access this page.
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div th:if="${successMessage}" class="alert alert-success">
+        <p th:text="${successMessage}"></p>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:insert="~{index :: footer}"></div>
+
+</body>
+</html>

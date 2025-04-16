@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>所有分类</title>
+</head>
+<body>
+    <h1>所有分类</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.name}"></td>
+                <td>
+                    <a th:href="@{/categories/edit/{id}(id=${category.id})}">编辑</a> |
+                    <a th:href="@{/categories/delete/{id}(id=${category.id})}">删除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/categories/create">创建新分类</a>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>创建新分类</title>
+</head>
+<body>
+    <h1>创建新分类</h1>
+    <form th:action="@{/categories/create}" method="post">
+        <label for="name">名称:</label>
+        <input type="text" id="name" name="name" th:value="${category.name}" required>
+        <button type="submit">创建</button>
+    </form>
+    <a href="/categories">返回分类列表</a>
+</body>
+</html>
